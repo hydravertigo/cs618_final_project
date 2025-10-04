@@ -26,7 +26,7 @@ export function CreatePost() {
    return (
       <form onSubmit={handleSubmit}>
          <div>
-            <label htmlFor='create-title'>Recipe Title: </label>
+            <label htmlFor='create-title'>Enter recipe title: </label>
             <input
                type='text'
                name='create-title'
@@ -39,9 +39,13 @@ export function CreatePost() {
          <br />
 
          <div>
-            <label htmlFor='contents'>Ingredient List: </label>
+            <label htmlFor='contents'>
+               Enter list of ingredients, one ingredient per line:{' '}
+            </label>
             <br />
             <textarea
+               rows='5'
+               cols='35'
                value={contents}
                onChange={(e) => setContents(e.target.value)}
             />
@@ -50,9 +54,10 @@ export function CreatePost() {
          <br />
 
          <div>
-            <label htmlFor='image'>Image URL:</label>
+            <label htmlFor='image'>Enter web url to recipe image:</label>
             <br />
             <input
+               size='35'
                type='text'
                name='image-url'
                id='image-url'
