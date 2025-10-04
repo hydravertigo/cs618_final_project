@@ -11,11 +11,11 @@ export function Post({ title, contents, imageurl, author }) {
          <br />
          <div>
             <b>Ingredients: </b>
-            {contents}
+            {contents.replace(/\n/g, ', ')}
          </div>
          <div>
             <h4>Image:</h4>
-            <img src={imageurl} alt='' width='200' height='200' />
+            <img src={imageurl} alt='' width='300' height='200' />
          </div>
          <br />
          {author && (
