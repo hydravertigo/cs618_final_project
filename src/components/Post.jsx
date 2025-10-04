@@ -1,22 +1,35 @@
 import PropTypes from 'prop-types'
 import { User } from './User.jsx'
 
-export function Post({ title, contents, author }) {
-  return (
-    <article>
-      <h3>{title}</h3>
-      <div>{contents}</div>
-      {author && (
-        <em>
-          <br />
-          Written by <User id={author} />
-        </em>
-      )}
-    </article>
-  )
+export function Post({ title, contents, imageurl, author }) {
+   return (
+      <article>
+         <div>
+            <b>Recipe Title: </b>
+            {title}
+         </div>
+         <br />
+         <div>
+            <b>Ingredients: </b>
+            {contents}
+         </div>
+         <div>
+            <h4>Image:</h4>
+            <img src={imageurl} alt='' width='200' height='200' />
+         </div>
+         <br />
+         {author && (
+            <em>
+               <br />
+               Written by <User id={author} />
+            </em>
+         )}
+      </article>
+   )
 }
 Post.propTypes = {
-  title: PropTypes.string.isRequired,
-  contents: PropTypes.string,
-  author: PropTypes.string,
+   title: PropTypes.string.isRequired,
+   contents: PropTypes.string,
+   imageurl: PropTypes.string,
+   author: PropTypes.string,
 }
