@@ -29,6 +29,13 @@ export function Post({ _id, title, contents, imageurl, author, likes }) {
       return (
          <article>
             <div>
+               <b>Post ID: </b>
+               {_id}
+            </div>
+
+            <br />
+
+            <div>
                <b>Recipe Title: </b>
                {title}
             </div>
@@ -64,6 +71,13 @@ export function Post({ _id, title, contents, imageurl, author, likes }) {
 
    return (
       <article>
+         <div>
+            <b>Post ID: </b>
+            {_id}
+         </div>
+
+         <br />
+
          <div>
             <b>Recipe Title: </b>
             {title}
