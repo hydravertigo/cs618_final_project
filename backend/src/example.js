@@ -5,12 +5,18 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 await initDatabase()
+
 const post = new Post({
-  title: 'Hello from the outside!',
-  author: 'Some Person',
-  contents: 'This post is stored in a MongoDB database using Mongoose.',
-  tags: ['other'],
+   title: 'Hello from the outside!',
+   author: 'Some Person',
+   contents: 'This post is stored in a MongoDB database using Mongoose.',
+   imageurl: 'This is a fake imageurl',
+   tags: ['other'],
+   likes: 0,
 })
+
 await post.save()
+
 const posts = await Post.find()
+
 console.log(posts)

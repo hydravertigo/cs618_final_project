@@ -1,3 +1,3 @@
 #!/bin/bash
 
-npm run dev
+(set -x ; npm run dev)

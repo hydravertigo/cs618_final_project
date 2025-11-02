@@ -8,11 +8,12 @@ export function CreatePost() {
    const [title, setTitle] = useState('')
    const [contents, setContents] = useState('')
    const [imageurl, setImageurl] = useState('')
+   const [likes, setLikes] = useState(0)
    const [token] = useAuth()
    const queryClient = useQueryClient()
 
    const createPostMutation = useMutation({
-      mutationFn: () => createPost(token, { title, contents, imageurl }),
+      mutationFn: () => createPost(token, { title, contents, imageurl, likes }),
       onSuccess: () => queryClient.invalidateQueries(['posts']),
    })
 
@@ -68,6 +69,15 @@ export function CreatePost() {
 
          <br />
          <br />
+
+         <input
+            type='hidden'
+            name='likes'
+            id='likes'
+            value={likes}
+            onChange={(e) => setLikes(e.target.value)}
+         />
+
          <input
             type='submit'
             value={createPostMutation.isPending ? 'Creating...' : 'Create'}
