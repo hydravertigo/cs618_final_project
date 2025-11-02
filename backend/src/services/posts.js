@@ -54,6 +54,17 @@ export async function updatePost(
    )
 }
 
+export async function updateLikes(
+   postId,
+   { title, contents, imageurl, tags, likes },
+) {
+   return await Post.findOneAndUpdate(
+      { _id: postId },
+      { $set: { title, contents, imageurl, tags, likes } },
+      { new: true },
+   )
+}
+
 export async function deletePost(userId, postId) {
    return await Post.deleteOne({ _id: postId, author: userId })
 }

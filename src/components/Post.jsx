@@ -14,8 +14,7 @@ export function Post({ _id, title, contents, imageurl, author, likes }) {
    const queryClient = useQueryClient()
 
    const createPostMutation = useMutation({
-      mutationFn: () =>
-         updatePost(token, _id, { title, contents, imageurl, likes }),
+      mutationFn: () => updatePost(_id, { title, contents, imageurl, likes }),
       onSuccess: () => queryClient.invalidateQueries(['posts']),
    })
 
