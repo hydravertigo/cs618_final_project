@@ -4,7 +4,6 @@ import {
    listPostsByTag,
    createPost,
    updatePost,
-   updateLikes,
    deletePost,
    getPostById,
 } from '../services/posts.js'
@@ -55,17 +54,7 @@ export function postsRoutes(app) {
       }
    })
 
-   app.patch('/api/v1/posts/:id', async (req, res) => {
-      try {
-         const post = await updateLikes(req.params.id, req.body)
-         return res.json(post)
-      } catch (err) {
-         console.error('error updating post', err)
-         return res.status(500).end()
-      }
-   })
-
-   app.patch1('/api/v1/posts/:id', requireAuth, async (req, res) => {
+   app.patch('/api/v1/posts/:id', requireAuth, async (req, res) => {
       try {
          const post = await updatePost(req.auth.sub, req.params.id, req.body)
          return res.json(post)

@@ -48,17 +48,6 @@ export async function updatePost(
    { title, contents, imageurl, tags, likes },
 ) {
    return await Post.findOneAndUpdate(
-      { _id: postId, author: userId },
-      { $set: { title, contents, imageurl, tags, likes } },
-      { new: true },
-   )
-}
-
-export async function updateLikes(
-   postId,
-   { title, contents, imageurl, tags, likes },
-) {
-   return await Post.findOneAndUpdate(
       { _id: postId },
       { $set: { title, contents, imageurl, tags, likes } },
       { new: true },

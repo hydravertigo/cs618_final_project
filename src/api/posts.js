@@ -34,7 +34,7 @@ export const updatePost = async (token, id, post) {
 }
 */
 
-export const updatePost = async (_id, post) => {
+export const updatePost = async (token, _id, post) => {
    const res = await fetch(
       `${import.meta.env.VITE_BACKEND_URL}/
 posts/${_id}`,
@@ -42,6 +42,7 @@ posts/${_id}`,
          method: 'PATCH',
          headers: {
             'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
          },
          body: JSON.stringify(post),
       },
