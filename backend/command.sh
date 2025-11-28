@@ -17,3 +17,5 @@
 #npm install serve@14.2.5
 
 #npm install uuid@9.0.1
+
+npm install socket.io@4.7.2

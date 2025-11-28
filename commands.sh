@@ -6,25 +6,29 @@
 
 #npm install jwt-decode@4.0.0
 
-npm install @apollo/client@3.9.5
+#npm install @apollo/client@3.9.5
 
-npm install compression@1.7.4
+#npm install compression@1.7.4
 
-npm install cross-env@7.0.3
+#npm install cross-env@7.0.3
 
-npm install dotenv@16.3.1
+#npm install dotenv@16.3.1
 
-npm install express@4.18.2
+#npm install express@4.18.2
 
-npm install graphql@16.8.1
+#npm install graphql@16.8.1
 
-npm install react-helmet-async@1.3.0
+#npm install react-helmet-async@1.3.0
 
-npm install serve@14.2.5
+#npm install serve@14.2.5
 
-npm install slug@8.2.3
+#npm install slug@8.2.3
 
-npm install victory@36.9.1
+#npm install victory@36.9.1
+
+# Touchpoint #3
+
+npm install socket.io-client@4.7.2
 
 
 #
