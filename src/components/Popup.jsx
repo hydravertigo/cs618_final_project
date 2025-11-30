@@ -6,7 +6,7 @@ import { useSocket } from '../contexts/SocketIOContext.jsx'
 
 import { useAuth } from '../contexts/AuthContext.jsx'
 
-export function Header() {
+export function Popup() {
    const [token, setToken] = useAuth()
    const { socket } = useSocket()
 

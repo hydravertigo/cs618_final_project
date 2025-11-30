@@ -42,6 +42,10 @@ export async function getPostById(postId) {
    return await Post.findById(postId)
 }
 
+export async function getLastPost() {
+   return await Post.findOne().sort({ createdAt: -1 })
+}
+
 export async function updatePost(
    userId,
    postId,

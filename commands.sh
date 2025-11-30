@@ -28,7 +28,9 @@
 
 # Touchpoint #3
 
-npm install socket.io-client@4.7.2
+#npm install socket.io-client@4.7.2
+
+npm install react-bootstrap bootstrap
 
 
 #

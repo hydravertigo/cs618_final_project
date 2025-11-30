@@ -6,6 +6,7 @@ import {
    updatePost,
    deletePost,
    getPostById,
+   getLastPost,
 } from '../services/posts.js'
 
 import { requireAuth } from '../middleware/jwt.js'
@@ -28,6 +29,17 @@ export function postsRoutes(app) {
          }
       } catch (err) {
          console.error('error listing posts', err)
+         return res.status(500).end()
+      }
+   })
+
+   app.get('/api/v1/lastpost', async (req, res) => {
+      try {
+         const post = await getLastPost()
+         if (post === null) return res.status(404).end()
+         return res.json(post)
+      } catch (err) {
+         console.error('error getting post', err)
          return res.status(500).end()
       }
    })

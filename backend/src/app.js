@@ -21,6 +21,7 @@ app.get('/', (req, res) => {
 })
 
 const server = createServer(app)
+
 const io = new Server(server, {
    cors: {
       origin: '*',
@@ -29,14 +30,4 @@ const io = new Server(server, {
 
 handleSocket(io)
 
-/*
-io.on('connection', (socket) => {
-   console.log('user connected:', socket.id)
-   socket.on('disconnect', () => {
-      console.log('user disconnected:', socket.id)
-   })
-})
-*/
-
 export { server as app }
-// export { app }
