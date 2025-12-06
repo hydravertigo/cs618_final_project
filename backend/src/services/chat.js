@@ -1,4 +1,4 @@
-import { createMessage, getMessagesByRoom } from './messages.js'
+import { getMessagesByRoom } from './messages.js'
 
 export function sendPrivateMessage(
    socket,
@@ -13,7 +13,6 @@ export function sendSystemMessage(io, { room, message }) {
 
 export function sendPublicMessage(io, { username, room, message }) {
    io.to(room).emit('chat.message', { username, message, room })
-   createMessage({ username, message, room })
 }
 
 export async function joinRoom(io, socket, { room }) {

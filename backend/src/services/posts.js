@@ -1,5 +1,4 @@
 import { Post } from '../db/models/post.js'
-
 import { User } from '../db/models/user.js'
 
 export async function createPost(
@@ -22,6 +21,10 @@ async function listPosts(
    { sortBy = 'createdAt', sortOrder = 'descending' } = {},
 ) {
    return await Post.find(query).sort({ [sortBy]: sortOrder })
+}
+
+export async function listLastPost() {
+   return await Post.find().sort({ createdAt: -1 }).limit(1)
 }
 
 export async function listAllPosts(options) {

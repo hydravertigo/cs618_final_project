@@ -1,10 +1,15 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useAuth } from '../contexts/AuthContext.jsx'
+import { useSocket } from '../contexts/SocketIOContext.jsx'
 
 import { createPost } from '../api/posts.js'
 
 export function CreatePost() {
+   const { socket } = useSocket()
+   //const [messages, setMessages] = useState([])
+   //const [currentRoom, setCurrentRoom] = useState('public')
+
    const [title, setTitle] = useState('')
    const [contents, setContents] = useState('')
    const [imageurl, setImageurl] = useState('')
@@ -20,6 +25,7 @@ export function CreatePost() {
    const handleSubmit = (e) => {
       e.preventDefault()
       createPostMutation.mutate()
+      socket.volatile.emit('chat.message', 'public', 'created')
    }
 
    if (!token) return <div>Please log in to create new posts.</div>

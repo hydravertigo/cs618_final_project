@@ -23,12 +23,26 @@ export const SocketIOContextProvider = ({ children }) => {
          })
          socket.on('connect', () => {
             setStatus('connected')
+            socket.sendBuffer = []
             setError(null)
          })
+
+         socket.on('chat.message', ({ currentRoom, message }) => {
+            console.log(`${socket.id}: ${currentRoom}, ${message}`)
+            if (message == 'created') {
+               if (window.confirm('Click OK to view new recipe')) {
+                  window.open('http://localhost:5173/lastrecipe')
+               }
+            }
+            socket.sendBuffer = []
+            setError(null)
+         })
+
          socket.on('connect_error', (err) => {
             setStatus('error')
             setError(err)
          })
+
          socket.on('disconnect', () => setStatus('disconnected'))
          setSocket(socket)
       }
