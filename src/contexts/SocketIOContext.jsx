@@ -31,7 +31,7 @@ export const SocketIOContextProvider = ({ children }) => {
             console.log(`${socket.id}: ${currentRoom}, ${message}`)
             if (message == 'created') {
                if (window.confirm('Click OK to view new recipe')) {
-                  window.open('http://localhost:5173/lastrecipe')
+                  window.open('http://localhost:5173/newrecipe')
                }
             }
             socket.sendBuffer = []
