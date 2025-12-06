@@ -1,11 +1,7 @@
 import jwt from 'jsonwebtoken'
 import { getUserInfoById } from './services/users.js'
 
-import {
-   joinRoom,
-   sendPublicMessage,
-   getUserInfoBySocketId,
-} from './services/chat.js'
+import { joinRoom, getUserInfoBySocketId } from './services/chat.js'
 
 export function handleSocket(io) {
    io.use((socket, next) => {
@@ -28,12 +24,22 @@ export function handleSocket(io) {
 
    io.on('connection', (socket) => {
       joinRoom(io, socket, { room: 'public' })
-      socket.on('chat.message', (room, message) =>
+      socket.on(
+         'chat.message',
+         (room, message) =>
+            socket.broadcast.emit('chat.message', {
+               username: socket.user.username,
+               room,
+               message,
+            }),
+
+         /*
          sendPublicMessage(io, {
             username: socket.user.username,
             room,
             message,
          }),
+         */
       )
       socket.on('chat.join', (room) => joinRoom(io, socket, { room }))
       socket.on('user.info', async (socketId, callback) =>
